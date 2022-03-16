@@ -1,0 +1,26 @@
+folder('Jobs') {
+    description('Jobs related to my software projects')
+}
+
+job('Jobs/Freestyle Example') {
+    steps {
+        shell('echo hola mundo desde un job generado con DSL')
+    }
+}
+
+pipelineJob('Jobs/Pipeline Github Example') {
+    definition {
+        cpsScm {
+            scm {
+                git {
+                    remote {
+                        // Aquí va la URL de tu repo!
+                        url("https://github.com/perrymason/xxxxxxxxxxx.git")
+                    }
+                    branches("main")
+                    scriptPath('Jenkinsfile')
+                }
+            }
+        }
+    }
+}
